@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:padc_animation/implicit_animations/explicit_animation_favourite_icon_button.dart';
 
 import 'implicit_animations/implicit_animations.dart';
 

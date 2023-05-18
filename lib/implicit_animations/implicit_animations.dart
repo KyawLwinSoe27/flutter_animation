@@ -48,18 +48,21 @@ class _ImplicitAnimationsState extends State<ImplicitAnimations> {
                       const SizedBox(
                         height: 100,
                       ),
-                      PrimaryButtonInColumn(
-                          onTapChangeDimension: () {
-                            print("object");
-                            setState(() {
-                              isNewDimension = !isNewDimension;
-                            });
-                          },
-                          onTapShowDescription: () {},
-                          onTapChangeTheme: () {},
-                          isShowDescription: isShowDescription)
                     ],
-                  )
+                  ),
+                  PrimaryButtonInColumn(
+                      onTapChangeDimension: () {
+                        setState(() {
+                          isNewDimension = !isNewDimension;
+                        });
+                      },
+                      onTapShowDescription: () {},
+                      onTapChangeTheme: () {
+                        setState(() {
+                          isChangeBackgroundColor = !isChangeBackgroundColor;
+                        });
+                      },
+                      isShowDescription: isShowDescription)
                 ],
               ),
             ),
@@ -71,9 +74,9 @@ class _ImplicitAnimationsState extends State<ImplicitAnimations> {
 }
 
 class PrimaryButtonInColumn extends StatelessWidget {
-  final Function onTapChangeDimension;
-  final Function onTapShowDescription;
-  final Function onTapChangeTheme;
+  final Function() onTapChangeDimension;
+  final Function() onTapShowDescription;
+  final Function() onTapChangeTheme;
   final bool isShowDescription;
   const PrimaryButtonInColumn(
       {Key? key,
@@ -88,11 +91,11 @@ class PrimaryButtonInColumn extends StatelessWidget {
     return Column(
       children: [
         PrimaryButton(
-            label: "Change Dimension", onTap: () => onTapChangeDimension),
+            label: "Change Dimension", onTap:  onTapChangeDimension),
         PrimaryButton(
             label: (isShowDescription) ? "Hide Dimension" : "Show Description",
-            onTap: () => onTapShowDescription),
-        PrimaryButton(label: "Change Theme", onTap: () => onTapChangeTheme)
+            onTap:  onTapShowDescription),
+        PrimaryButton(label: "Change Theme", onTap: onTapChangeTheme)
       ],
     );
   }
